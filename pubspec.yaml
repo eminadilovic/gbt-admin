@@ -59,10 +59,19 @@ dependencies:
   cloud_firestore: ^4.9.2
 
   # Auth
-  google_sign_in: ^6.1.5
+  google_sign_in: ^6.1.6
   sign_in_with_apple: ^5.0.0
   json_annotation: ^4.8.1
   country_picker: ^2.0.21
+  firebase_storage: ^11.5.2
+  uuid: ^4.2.1
+  hooks_riverpod: ^2.4.8
+  font_awesome_flutter: ^10.6.0
+  image_picker: ^1.0.4
+  image: ^4.1.3
+  flutter_hooks: ^0.20.3
+  image_cropper: ^5.0.1
+  lottie: ^2.7.0
 
 dev_dependencies:
   flutter_test:
@@ -105,4 +114,5 @@ flutter:
     - assets/translations/
     - assets/icons/
     - assets/images/
+    - assets/lotties/
     - assets/movie_list.json

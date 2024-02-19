@@ -29,7 +29,7 @@ class CustomButton extends StatelessWidget {
           ),
         ),
         child: SizedBox(
-          width: isExpanded! ? double.infinity : MediaQuery.sizeOf(context).width / 2,
+          width: isExpanded! ? double.infinity : 200,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 12),
             child: Center(

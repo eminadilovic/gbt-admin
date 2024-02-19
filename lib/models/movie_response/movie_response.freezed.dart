@@ -79,11 +79,11 @@ class _$MovieResponseCopyWithImpl<$Res, $Val extends MovieResponse>
 }
 
 /// @nodoc
-abstract class _$$_MovieResponseCopyWith<$Res>
+abstract class _$$MovieResponseImplCopyWith<$Res>
     implements $MovieResponseCopyWith<$Res> {
-  factory _$$_MovieResponseCopyWith(
-          _$_MovieResponse value, $Res Function(_$_MovieResponse) then) =
-      __$$_MovieResponseCopyWithImpl<$Res>;
+  factory _$$MovieResponseImplCopyWith(
+          _$MovieResponseImpl value, $Res Function(_$MovieResponseImpl) then) =
+      __$$MovieResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -93,11 +93,11 @@ abstract class _$$_MovieResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MovieResponseCopyWithImpl<$Res>
-    extends _$MovieResponseCopyWithImpl<$Res, _$_MovieResponse>
-    implements _$$_MovieResponseCopyWith<$Res> {
-  __$$_MovieResponseCopyWithImpl(
-      _$_MovieResponse _value, $Res Function(_$_MovieResponse) _then)
+class __$$MovieResponseImplCopyWithImpl<$Res>
+    extends _$MovieResponseCopyWithImpl<$Res, _$MovieResponseImpl>
+    implements _$$MovieResponseImplCopyWith<$Res> {
+  __$$MovieResponseImplCopyWithImpl(
+      _$MovieResponseImpl _value, $Res Function(_$MovieResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -107,7 +107,7 @@ class __$$_MovieResponseCopyWithImpl<$Res>
     Object? totalPages = null,
     Object? movies = null,
   }) {
-    return _then(_$_MovieResponse(
+    return _then(_$MovieResponseImpl(
       page: null == page
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
@@ -126,15 +126,15 @@ class __$$_MovieResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MovieResponse implements _MovieResponse {
-  _$_MovieResponse(
+class _$MovieResponseImpl implements _MovieResponse {
+  _$MovieResponseImpl(
       {required this.page,
       @JsonKey(name: 'total_pages') required this.totalPages,
       @JsonKey(name: 'results') required final List<Movie> movies})
       : _movies = movies;
 
-  factory _$_MovieResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_MovieResponseFromJson(json);
+  factory _$MovieResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MovieResponseImplFromJson(json);
 
   @override
   final int page;
@@ -159,7 +159,7 @@ class _$_MovieResponse implements _MovieResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MovieResponse &&
+            other is _$MovieResponseImpl &&
             (identical(other.page, page) || other.page == page) &&
             (identical(other.totalPages, totalPages) ||
                 other.totalPages == totalPages) &&
@@ -174,12 +174,12 @@ class _$_MovieResponse implements _MovieResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MovieResponseCopyWith<_$_MovieResponse> get copyWith =>
-      __$$_MovieResponseCopyWithImpl<_$_MovieResponse>(this, _$identity);
+  _$$MovieResponseImplCopyWith<_$MovieResponseImpl> get copyWith =>
+      __$$MovieResponseImplCopyWithImpl<_$MovieResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MovieResponseToJson(
+    return _$$MovieResponseImplToJson(
       this,
     );
   }
@@ -190,10 +190,10 @@ abstract class _MovieResponse implements MovieResponse {
           {required final int page,
           @JsonKey(name: 'total_pages') required final int totalPages,
           @JsonKey(name: 'results') required final List<Movie> movies}) =
-      _$_MovieResponse;
+      _$MovieResponseImpl;
 
   factory _MovieResponse.fromJson(Map<String, dynamic> json) =
-      _$_MovieResponse.fromJson;
+      _$MovieResponseImpl.fromJson;
 
   @override
   int get page;
@@ -205,6 +205,6 @@ abstract class _MovieResponse implements MovieResponse {
   List<Movie> get movies;
   @override
   @JsonKey(ignore: true)
-  _$$_MovieResponseCopyWith<_$_MovieResponse> get copyWith =>
+  _$$MovieResponseImplCopyWith<_$MovieResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

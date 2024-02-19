@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "973035508247",
+    "project_id": "global-barber-tool",
+    "storage_bucket": "global-barber-tool.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973035508247:android:342c4c28a0e27fddf8c252",
+        "android_client_info": {
+          "package_name": "com.example.gbt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "973035508247-1116v8jr9vvma7f68vv325gg6s56s0od.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gbt",
+            "certificate_hash": "2ae293eb914397311d134bdfc8408acf9a835e9a"
+          }
+        },
+        {
+          "client_id": "973035508247-h3fbushg8qi4giktat15s247bt9nmm3h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gbt",
+            "certificate_hash": "c5a67e6a0b15a4831e61a94bb118d9c7b08215f8"
+          }
+        },
+        {
+          "client_id": "973035508247-4l9vg6484qd03dq3egfqlmolm3m1rdmq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFdNnR__IU7OW-zlrFcnelI9qkBkNk3Qs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "973035508247-4l9vg6484qd03dq3egfqlmolm3m1rdmq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "973035508247-i8446cpgj6v8rti1di3lpaulb8gidlku.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.globalbarbertool.owner"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973035508247:android:dee5f535c4805206f8c252",
+        "android_client_info": {
+          "package_name": "com.globalbarbertool.owner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "973035508247-4l9vg6484qd03dq3egfqlmolm3m1rdmq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFdNnR__IU7OW-zlrFcnelI9qkBkNk3Qs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "973035508247-4l9vg6484qd03dq3egfqlmolm3m1rdmq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "973035508247-i8446cpgj6v8rti1di3lpaulb8gidlku.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.globalbarbertool.owner"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,7 +4,7 @@ import '../../../models/movie/movie.dart';
 import '../../../providers/repositories_providers.dart';
 import '../../../repositories/movie/http_movie_repository.dart';
 
-final currentPageProvider = StateProvider<int>((ref) => 1);
+final currentPageProvider = StateProvider<int>((ref) => 0);
 final totalPagesProvider = StateProvider<int>((ref) => 1);
 
 final homeControllerProvider = StateNotifierProvider<HomeController, AsyncValue<List<Movie>>>((ref) {

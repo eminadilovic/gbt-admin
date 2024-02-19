@@ -24,8 +24,10 @@ class LoginPage extends ConsumerWidget {
     @override
     final controller = ref.watch(authControllerProvider);
 
+    final emailController = TextEditingController();
+    final passwordController = TextEditingController();
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      //resizeToAvoidBottomInset: false,
       body: Container(
         constraints: const BoxConstraints.expand(),
         decoration: const BoxDecoration(
@@ -79,7 +81,16 @@ class LoginPage extends ConsumerWidget {
                 children: [
                   CustomButtonWithWidget(
                     onPressed: () {
-                      FirebaseAuthService(FirebaseAuth.instance).signInWithGoogle();
+                      FirebaseAuthService(FirebaseAuth.instance).signInWithGoogle().then((value) {
+                        print('1');
+
+                        if (value != null) {
+                          print('2');
+                          GoRouter.of(context).pushNamed(
+                            RouteNames.registrationDetails,
+                          );
+                        }
+                      });
                     },
                     width: 30,
                     buttonColor: AppColors.transparentGray,
@@ -93,7 +104,16 @@ class LoginPage extends ConsumerWidget {
                   ),
                   CustomButtonWithWidget(
                     onPressed: () {
-                      FirebaseAuthService(FirebaseAuth.instance).signInWithGoogle();
+                      FirebaseAuthService(FirebaseAuth.instance).signInWithGoogle().then((value) {
+                        print('2');
+
+                        if (value != null) {
+                          print('2');
+                          GoRouter.of(context).pushNamed(
+                            RouteNames.registrationDetails,
+                          );
+                        }
+                      });
                     },
                     width: 30,
                     buttonColor: AppColors.transparentGray,
@@ -112,7 +132,11 @@ class LoginPage extends ConsumerWidget {
                     GoRouter.of(context).pushNamed(
                       RouteNames.registrationDetails,
                     );
-                  } else {}
+                  } else {
+                    GoRouter.of(context).pushNamed(
+                      RouteNames.registrationDetails,
+                    );
+                  }
                 },
                 buttonColor: AppColors.secondary,
                 isExpanded: true,

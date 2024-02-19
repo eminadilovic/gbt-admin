@@ -102,9 +102,10 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
 }
 
 /// @nodoc
-abstract class _$$_MovieCopyWith<$Res> implements $MovieCopyWith<$Res> {
-  factory _$$_MovieCopyWith(_$_Movie value, $Res Function(_$_Movie) then) =
-      __$$_MovieCopyWithImpl<$Res>;
+abstract class _$$MovieImplCopyWith<$Res> implements $MovieCopyWith<$Res> {
+  factory _$$MovieImplCopyWith(
+          _$MovieImpl value, $Res Function(_$MovieImpl) then) =
+      __$$MovieImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -117,9 +118,11 @@ abstract class _$$_MovieCopyWith<$Res> implements $MovieCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_MovieCopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res, _$_Movie>
-    implements _$$_MovieCopyWith<$Res> {
-  __$$_MovieCopyWithImpl(_$_Movie _value, $Res Function(_$_Movie) _then)
+class __$$MovieImplCopyWithImpl<$Res>
+    extends _$MovieCopyWithImpl<$Res, _$MovieImpl>
+    implements _$$MovieImplCopyWith<$Res> {
+  __$$MovieImplCopyWithImpl(
+      _$MovieImpl _value, $Res Function(_$MovieImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -132,7 +135,7 @@ class __$$_MovieCopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res, _$_Movie>
     Object? releaseDate = null,
     Object? poster = freezed,
   }) {
-    return _then(_$_Movie(
+    return _then(_$MovieImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -163,8 +166,8 @@ class __$$_MovieCopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res, _$_Movie>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Movie implements _Movie {
-  _$_Movie(
+class _$MovieImpl implements _Movie {
+  _$MovieImpl(
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'vote_average') required this.rating,
@@ -172,8 +175,8 @@ class _$_Movie implements _Movie {
       @JsonKey(name: 'release_date') required this.releaseDate,
       @JsonKey(name: 'poster_path') this.poster});
 
-  factory _$_Movie.fromJson(Map<String, dynamic> json) =>
-      _$$_MovieFromJson(json);
+  factory _$MovieImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MovieImplFromJson(json);
 
   @override
   @JsonKey(name: 'id')
@@ -203,7 +206,7 @@ class _$_Movie implements _Movie {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Movie &&
+            other is _$MovieImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.rating, rating) || other.rating == rating) &&
@@ -222,12 +225,12 @@ class _$_Movie implements _Movie {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MovieCopyWith<_$_Movie> get copyWith =>
-      __$$_MovieCopyWithImpl<_$_Movie>(this, _$identity);
+  _$$MovieImplCopyWith<_$MovieImpl> get copyWith =>
+      __$$MovieImplCopyWithImpl<_$MovieImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MovieToJson(
+    return _$$MovieImplToJson(
       this,
     );
   }
@@ -240,9 +243,9 @@ abstract class _Movie implements Movie {
       @JsonKey(name: 'vote_average') required final double rating,
       @JsonKey(name: 'overview') required final String overview,
       @JsonKey(name: 'release_date') required final String releaseDate,
-      @JsonKey(name: 'poster_path') final String? poster}) = _$_Movie;
+      @JsonKey(name: 'poster_path') final String? poster}) = _$MovieImpl;
 
-  factory _Movie.fromJson(Map<String, dynamic> json) = _$_Movie.fromJson;
+  factory _Movie.fromJson(Map<String, dynamic> json) = _$MovieImpl.fromJson;
 
   @override
   @JsonKey(name: 'id')
@@ -264,6 +267,6 @@ abstract class _Movie implements Movie {
   String? get poster;
   @override
   @JsonKey(ignore: true)
-  _$$_MovieCopyWith<_$_Movie> get copyWith =>
+  _$$MovieImplCopyWith<_$MovieImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
