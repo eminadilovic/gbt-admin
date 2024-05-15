@@ -24,21 +24,26 @@ class RegistrationController extends StateNotifier<ShopRequest?> {
         profileImage: '',
         subscriptions: []);
   }
+
   final Ref ref;
   final RegistrationRepository registrationRepository;
 
-  Future<String?> createShop() async {
+  Future<bool> createShop() async {
     if (state != null) {
       final uploadedImages = await uploadImages();
       if (uploadedImages) {
-        final shopId = await registrationRepository.createShop(state!);
-        return shopId;
+        final userAdded = await registrationRepository.createShop(state!);
+        if (userAdded) {
+          return true;
+        } else {
+          return false;
+        }
       } else {
-        return null;
+        return false;
       }
     } else {
       print('state je null');
-      return null;
+      return false;
     }
   }
 
@@ -48,22 +53,19 @@ class RegistrationController extends StateNotifier<ShopRequest?> {
 
       final profileImage = ref.read(selectedImageFileCropped);
       final overviewImages = ref.read(photoGridProvider).photos;
-      final shopNameTrimmed = state == null ? '' : state?.barberShopName.replaceAll(RegExp(r'\s+'), '');
 
       String? profileImageUrl;
       final overviewImagesUrl = <String>[];
-      print('idemo sa upload slike');
 
       if (profileImage != null) {
-        profileImageUrl = await ImageUploaderHelper.uploadImage(
-            profileImage.path, '${state!.userId}_${shopNameTrimmed!.toLowerCase()}', 'profileImage');
+        profileImageUrl = await ImageUploaderHelper.uploadImage(profileImage.path, state!.userId, 'profileImage');
       }
 
       if (overviewImages != null && overviewImages.isNotEmpty) {
         for (var i = 0; i < overviewImages.length; i++) {
-          final overviewImage = await ImageUploaderHelper.uploadImage(overviewImages[i].path,
-                  '${state!.userId}_${shopNameTrimmed?.toLowerCase()}', 'overviewImage_${i + 1}') ??
-              '';
+          final overviewImage =
+              await ImageUploaderHelper.uploadImage(overviewImages[i].path, state!.userId, 'overviewImage_${i + 1}') ??
+                  '';
           overviewImagesUrl.add(overviewImage);
         }
       }

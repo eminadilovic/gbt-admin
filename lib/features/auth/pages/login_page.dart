@@ -105,10 +105,7 @@ class LoginPage extends ConsumerWidget {
                   CustomButtonWithWidget(
                     onPressed: () {
                       FirebaseAuthService(FirebaseAuth.instance).signInWithGoogle().then((value) {
-                        print('2');
-
                         if (value != null) {
-                          print('2');
                           GoRouter.of(context).pushNamed(
                             RouteNames.registrationDetails,
                           );

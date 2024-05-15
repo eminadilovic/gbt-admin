@@ -21,15 +21,10 @@ class ShopDataNotifierController extends AsyncNotifier<ShopData?> {
   }
 
   Future<ShopData?> getShopData() async {
-    print('get shop data');
-    final shopId = await ref.read(registrationControllerProvider.notifier).createShop();
-    print('after create a shop');
+    final success = await ref.read(registrationControllerProvider.notifier).createShop();
 
-    final userId = const Authenticator().userId;
-    print('userId = $userId');
-
-    if (userId != null) {
-      final result = await ShopDataService().getShopData(shopId ?? '');
+    if (success) {
+      final result = await ShopDataService().getShopData(const Authenticator().userId.toString());
       return result!;
     }
     return null;
@@ -42,13 +37,14 @@ class ShopDataNotifierController extends AsyncNotifier<ShopData?> {
 class ShopDataService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<ShopData?> getShopData(String shopId) async {
+  Future<ShopData?> getShopData(String userId) async {
     try {
-      print('pokusaavm da getam');
-      final documentSnapshot = await _firestore.collection('shops').doc(shopId).get();
+      final documentSnapshot = await _firestore.collection('shops').doc(userId).get();
       if (documentSnapshot.exists) {
         return ShopData.fromFirestore(documentSnapshot);
       } else {
+        print('Getting document is not enable');
+
         return null;
       }
     } catch (error) {

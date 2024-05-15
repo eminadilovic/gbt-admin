@@ -20,8 +20,6 @@ ShopData _$ShopDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ShopData {
-  @JsonKey(name: 'shop_id')
-  String get shopId => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_id')
   String get userId => throw _privateConstructorUsedError;
   @JsonKey(name: 'barber_shop_name')
@@ -53,8 +51,7 @@ abstract class $ShopDataCopyWith<$Res> {
       _$ShopDataCopyWithImpl<$Res, ShopData>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'shop_id') String shopId,
-      @JsonKey(name: 'user_id') String userId,
+      {@JsonKey(name: 'user_id') String userId,
       @JsonKey(name: 'barber_shop_name') String barberShopName,
       @JsonKey(name: 'owner_name') String ownerName,
       @JsonKey(name: 'country_code') String countryCode,
@@ -78,7 +75,6 @@ class _$ShopDataCopyWithImpl<$Res, $Val extends ShopData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? shopId = null,
     Object? userId = null,
     Object? barberShopName = null,
     Object? ownerName = null,
@@ -90,10 +86,6 @@ class _$ShopDataCopyWithImpl<$Res, $Val extends ShopData>
     Object? overviewDescription = freezed,
   }) {
     return _then(_value.copyWith(
-      shopId: null == shopId
-          ? _value.shopId
-          : shopId // ignore: cast_nullable_to_non_nullable
-              as String,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -143,8 +135,7 @@ abstract class _$$ShopDataImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'shop_id') String shopId,
-      @JsonKey(name: 'user_id') String userId,
+      {@JsonKey(name: 'user_id') String userId,
       @JsonKey(name: 'barber_shop_name') String barberShopName,
       @JsonKey(name: 'owner_name') String ownerName,
       @JsonKey(name: 'country_code') String countryCode,
@@ -166,7 +157,6 @@ class __$$ShopDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? shopId = null,
     Object? userId = null,
     Object? barberShopName = null,
     Object? ownerName = null,
@@ -178,10 +168,6 @@ class __$$ShopDataImplCopyWithImpl<$Res>
     Object? overviewDescription = freezed,
   }) {
     return _then(_$ShopDataImpl(
-      shopId: null == shopId
-          ? _value.shopId
-          : shopId // ignore: cast_nullable_to_non_nullable
-              as String,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -226,8 +212,7 @@ class __$$ShopDataImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ShopDataImpl implements _ShopData {
   _$ShopDataImpl(
-      {@JsonKey(name: 'shop_id') required this.shopId,
-      @JsonKey(name: 'user_id') required this.userId,
+      {@JsonKey(name: 'user_id') required this.userId,
       @JsonKey(name: 'barber_shop_name') required this.barberShopName,
       @JsonKey(name: 'owner_name') required this.ownerName,
       @JsonKey(name: 'country_code') required this.countryCode,
@@ -242,9 +227,6 @@ class _$ShopDataImpl implements _ShopData {
   factory _$ShopDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$ShopDataImplFromJson(json);
 
-  @override
-  @JsonKey(name: 'shop_id')
-  final String shopId;
   @override
   @JsonKey(name: 'user_id')
   final String userId;
@@ -291,7 +273,7 @@ class _$ShopDataImpl implements _ShopData {
 
   @override
   String toString() {
-    return 'ShopData(shopId: $shopId, userId: $userId, barberShopName: $barberShopName, ownerName: $ownerName, countryCode: $countryCode, townName: $townName, profileImage: $profileImage, subscriptions: $subscriptions, overviewImages: $overviewImages, overviewDescription: $overviewDescription)';
+    return 'ShopData(userId: $userId, barberShopName: $barberShopName, ownerName: $ownerName, countryCode: $countryCode, townName: $townName, profileImage: $profileImage, subscriptions: $subscriptions, overviewImages: $overviewImages, overviewDescription: $overviewDescription)';
   }
 
   @override
@@ -299,7 +281,6 @@ class _$ShopDataImpl implements _ShopData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ShopDataImpl &&
-            (identical(other.shopId, shopId) || other.shopId == shopId) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.barberShopName, barberShopName) ||
                 other.barberShopName == barberShopName) &&
@@ -323,7 +304,6 @@ class _$ShopDataImpl implements _ShopData {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      shopId,
       userId,
       barberShopName,
       ownerName,
@@ -350,8 +330,7 @@ class _$ShopDataImpl implements _ShopData {
 
 abstract class _ShopData implements ShopData {
   factory _ShopData(
-      {@JsonKey(name: 'shop_id') required final String shopId,
-      @JsonKey(name: 'user_id') required final String userId,
+      {@JsonKey(name: 'user_id') required final String userId,
       @JsonKey(name: 'barber_shop_name') required final String barberShopName,
       @JsonKey(name: 'owner_name') required final String ownerName,
       @JsonKey(name: 'country_code') required final String countryCode,
@@ -365,9 +344,6 @@ abstract class _ShopData implements ShopData {
   factory _ShopData.fromJson(Map<String, dynamic> json) =
       _$ShopDataImpl.fromJson;
 
-  @override
-  @JsonKey(name: 'shop_id')
-  String get shopId;
   @override
   @JsonKey(name: 'user_id')
   String get userId;

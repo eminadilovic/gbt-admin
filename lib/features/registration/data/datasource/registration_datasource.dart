@@ -3,17 +3,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class RegistrationDatasource {
   RegistrationDatasource();
 
-  Future<String> createShopDS(Map<String, dynamic> data) async {
-    final shopId = await FirebaseFirestore.instance.collection('shops').add(data).then((value) => value.id);
-    return shopId;
-  }
+  Future<bool> createShopDS(Map<String, dynamic> data, String userId) async {
+    final DocumentReference userDocRef = FirebaseFirestore.instance.collection('shops').doc(userId);
+    final docSnapshot = await userDocRef.get();
 
-  Future<void> addShopId(String shopId) async {
-    await FirebaseFirestore.instance.collection('shops').doc(shopId).set(
-      {
-        'shop_id': shopId,
-      },
-      SetOptions(merge: true),
-    );
+    if (docSnapshot.exists) {
+      print('This user has registrated shop already');
+      return false;
+    } else {
+      await userDocRef.set(data);
+      return true;
+    }
   }
 }

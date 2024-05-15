@@ -8,7 +8,6 @@ part of 'shop_data.dart';
 
 _$ShopDataImpl _$$ShopDataImplFromJson(Map<String, dynamic> json) =>
     _$ShopDataImpl(
-      shopId: json['shop_id'] as String,
       userId: json['user_id'] as String,
       barberShopName: json['barber_shop_name'] as String,
       ownerName: json['owner_name'] as String,
@@ -26,7 +25,6 @@ _$ShopDataImpl _$$ShopDataImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$ShopDataImplToJson(_$ShopDataImpl instance) =>
     <String, dynamic>{
-      'shop_id': instance.shopId,
       'user_id': instance.userId,
       'barber_shop_name': instance.barberShopName,
       'owner_name': instance.ownerName,

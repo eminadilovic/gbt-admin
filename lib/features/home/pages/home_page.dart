@@ -2,38 +2,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../theme/src/app_colors.dart';
 import '../controllers/home_controller.dart';
 
 class HomePage extends ConsumerWidget {
-  HomePage({super.key});
-  final List<Widget> children = [
-    const Center(
-        child: Text(
-      '1',
-      style: TextStyle(color: Colors.white, fontSize: 30),
-    )),
-    const Center(
-        child: Text(
-      '2',
-      style: TextStyle(color: Colors.white, fontSize: 30),
-    )),
-    const Center(
-        child: Text(
-      '3',
-      style: TextStyle(color: Colors.white, fontSize: 30),
-    )),
-    const Center(
-        child: Text(
-      '4',
-      style: TextStyle(color: Colors.white, fontSize: 30),
-    )),
-  ];
+  final Widget child;
+  const HomePage({required this.child});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final movieListValue = ref.watch(homeControllerProvider);
+
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -43,7 +23,11 @@ class HomePage extends ConsumerWidget {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: children[ref.watch(currentPageProvider)],
+        resizeToAvoidBottomInset: false,
+        body: Padding(
+          padding: const EdgeInsets.only(left: 12, right: 12, top: 50),
+          child: child,
+        ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: ref.watch(currentPageProvider),
           type: BottomNavigationBarType.fixed,
@@ -53,6 +37,19 @@ class HomePage extends ConsumerWidget {
           unselectedFontSize: 14,
           onTap: (value) {
             ref.read(currentPageProvider.notifier).state = value;
+
+            switch (value) {
+              case 0:
+                return context.go('/workers');
+              case 1:
+                return context.go('/services');
+              case 2:
+                return context.go('/statistic');
+              case 3:
+                return context.go('/settings');
+              default:
+                return context.go('/dashboard');
+            }
           },
           items: const [
             BottomNavigationBarItem(

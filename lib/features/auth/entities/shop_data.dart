@@ -9,7 +9,6 @@ part 'shop_data.g.dart';
 @freezed
 class ShopData with _$ShopData {
   factory ShopData({
-    @JsonKey(name: 'shop_id') required String shopId,
     @JsonKey(name: 'user_id') required String userId,
     @JsonKey(name: 'barber_shop_name') required String barberShopName,
     @JsonKey(name: 'owner_name') required String ownerName,
