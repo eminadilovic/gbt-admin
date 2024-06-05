@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_expression_function_bodies
+// ignore_for_file: prefer_expression_function_bodies, use_build_context_synchronously
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -9,16 +9,18 @@ import '../../../../router/route_paths.dart';
 import '../../../../shared/custom_button_with_widget.dart';
 import '../../../../theme/src/app_colors.dart';
 import '../../../../theme/src/app_text_styles.dart';
-import '../providers/service_controller.dart';
+import '../../../services/presentation/providers/service_controller.dart';
+import '../providers/add_worker_provider.dart';
 
-class ServicesListPage extends HookConsumerWidget {
-  const ServicesListPage({
+class AddWorkerServicesPage extends HookConsumerWidget {
+  const AddWorkerServicesPage({
     super.key,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final serviceNotifier = ref.watch(serviceControllerProvider);
+    final workerProvider = ref.read(addWorkerProvider);
     // final controller = useTextEditingController();
 
     return Scaffold(
@@ -29,7 +31,7 @@ class ServicesListPage extends HookConsumerWidget {
           const SizedBox(
             height: 50,
           ),
-          Text('Services', style: AppTextStyles.h1),
+          Text("${workerProvider.name}'s Services", style: AppTextStyles.h1),
           const Divider(),
           Padding(
             padding: const EdgeInsets.all(8),
@@ -40,8 +42,9 @@ class ServicesListPage extends HookConsumerWidget {
                   size: 50,
                 ),
                 Text(
-                  'Tap here to ADD new Service',
+                  'Tap here to ADD new\n${workerProvider.name} service',
                   style: AppTextStyles.p6,
+                  textAlign: TextAlign.center,
                 ),
               ]),
               onPressed: () {
@@ -53,7 +56,7 @@ class ServicesListPage extends HookConsumerWidget {
               isExpanded: true,
             ),
           ),
-          Text('Your services', style: AppTextStyles.h3),
+          Text("${workerProvider.name}'s services", style: AppTextStyles.h3),
           const Divider(),
           Expanded(
             child: AnimatedContainer(

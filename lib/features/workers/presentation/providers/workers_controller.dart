@@ -1,66 +1,81 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../services/auth/backend/authenticator.dart';
+import '../../../image_uploader/image_uploader_helper.dart';
 import '../../data/repositoriesImpl/workersRepositoryImpl.dart';
 import '../../domain/entities/worker/worker_request.dart';
 import '../../domain/repositories/workers_repository.dart';
+import 'image_upload_provider.dart';
 
-final workersControllerProvider = StateNotifierProvider<WorkerController, List<WorkerRequest?>>((ref) {
+final workersControllerProvider = StateNotifierProvider<WorkerController, AsyncValue<List<WorkerRequest>>>((ref) {
   final workersRepository = WorkersRepositoryImpl();
 
   return WorkerController(workersRepository, ref);
 });
 
-class WorkerController extends StateNotifier<List<WorkerRequest?>> {
-  WorkerController(this.workersRepository, this.ref) : super([]) {
-    state = [];
+class WorkerController extends StateNotifier<AsyncValue<List<WorkerRequest>>> {
+  WorkerController(this.workersRepository, this.ref) : super(const AsyncValue.loading()) {
+    _fetchWorkers();
   }
   final Ref ref;
   final WorkersRepository workersRepository;
 
-  Future<String?> addWorker(WorkerRequest worker) async {
-    return null;
+  Future<void> _fetchWorkers() async {
+    try {
+      final workers = await workersRepository.getWorkers();
 
-    /*  if (state != null) {
-      final uploadedImages = await uploadImages();
-      if (uploadedImages) {
-        final shopId = await registrationRepository.createShop(state);
-        return shopId;
-      } else {
-        return null;
-      }
-    } else {
-      print('state je null');
-      return null;
-    } */
+      state = AsyncValue.data(workers);
+    } catch (error) {
+      state = AsyncValue.error(error, StackTrace.current);
+      print('Greška prilikom dohvata servisa: $error');
+    }
   }
 
-  Future<bool> uploadImage() async {
-    return true;
-    /*  try {
+  Future<bool> deleteWorker(String workerId) async {
+    final userId = const Authenticator().userId!;
+    final done = await workersRepository.deleteWorker(workerId, userId);
+    if (done) {
+      state.value?.removeWhere((element) => element.userId == workerId);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool?> addWorker(WorkerRequest worker) async {
+    final uploadedImage = await uploadImage(worker.userId);
+    if (uploadedImage == null || const Authenticator().userId == null) return false;
+    final workerRequest = worker.copyWith(profileImage: uploadedImage);
+    final done = await workersRepository.createWorker(workerRequest, const Authenticator().userId!);
+    if (done) {
+      state = state.whenData((currentWorkers) {
+        final updatedWorkers = List<WorkerRequest>.from(currentWorkers);
+        updatedWorkers.add(workerRequest);
+        return updatedWorkers;
+      });
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<String?> uploadImage(String workerId) async {
+    try {
       final workerImage = ref.read(workerImageFileCropped);
 
       String? profileImageUrl;
+      final shopId = const Authenticator().userId;
 
       if (workerImage != null) {
-        profileImageUrl = await ImageUploaderHelper.uploadImage(
-            workerImage.path, '${state.userId}_${shopNameTrimmed!.toLowerCase()}', 'profileImage');
+        profileImageUrl = await ImageUploaderHelper.uploadImage(workerImage.path, '$shopId/workers', workerId);
+
+        return profileImageUrl;
       }
 
-      if (overviewImages != null && overviewImages.isNotEmpty) {
-        for (var i = 0; i < overviewImages.length; i++) {
-          final overviewImage = await ImageUploaderHelper.uploadImage(overviewImages[i].path,
-                  '${state.userId}_${shopNameTrimmed?.toLowerCase()}', 'overviewImage_${i + 1}') ??
-              '';
-          overviewImagesUrl.add(overviewImage);
-        }
-      }
-
-      state = state.copyWith(profileImage: profileImageUrl ?? '', overviewImages: overviewImagesUrl);
-
-      return true;
+      return null;
     } catch (e) {
       print('error $e');
-      return false;
-    } */
+      return null;
+    }
   }
 }

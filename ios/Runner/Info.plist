@@ -52,5 +52,30 @@
 			<string>en</string>
 			<string>hr</string>
 		</array>
+		<key>CFBundleURLTypes</key>
+		<array>
+		    <dict>
+		        <key>CFBundleTypeRole</key>
+		        <string>Editor</string>
+		        <key>CFBundleURLSchemes</key>
+		        <array>
+		            <string>com.globalbarbertool.owner</string>
+		        </array>
+		    </dict>
+		    <dict>
+		        <key>CFBundleTypeRole</key>
+		        <string>Editor</string>
+		        <key>CFBundleURLSchemes</key>
+		        <array>
+		            <string>com.googleusercontent.apps.973035508247-i8446cpgj6v8rti1di3lpaulb8gidlku</string>
+		        </array>
+		    </dict>
+		</array>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>For a better experience using this app, we need access to your photo library and camera</string>
+		<key>NSCameraUsageDescription</key>
+		<string>For a better experience using this app, we need access to your photo library and camera</string>
+		<key>NSMicrophoneUsageDescription</key>
+		<string>For a better experience using this app, we need access to your photo library and camera</string>
 	</dict>
 </plist>

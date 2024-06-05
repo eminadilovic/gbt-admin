@@ -13,7 +13,7 @@ class AppThemes {
           primarySwatch: Colors.indigo,
         ),
         scaffoldBackgroundColor: AppColors.background,
-        backgroundColor: AppColors.background,
+        //backgroundColor: AppColors.background,
         cardColor: AppColors.white,
         pageTransitionsTheme: const PageTransitionsTheme(
           builders: {
@@ -22,15 +22,15 @@ class AppThemes {
           },
         ),
         textTheme: TextTheme(
-          headline1: AppTextStyles.h1,
-          headline2: AppTextStyles.h2,
-          headline3: AppTextStyles.h3,
-          bodyText1: AppTextStyles.p1,
-          bodyText2: AppTextStyles.p2,
-          subtitle1: AppTextStyles.p3,
-          subtitle2: AppTextStyles.p4,
-          headline5: AppTextStyles.p5,
-          caption: AppTextStyles.p6,
+          headlineLarge: AppTextStyles.h1,
+          headlineMedium: AppTextStyles.h2,
+          headlineSmall: AppTextStyles.h3,
+          bodyLarge: AppTextStyles.p1,
+          bodyMedium: AppTextStyles.p2,
+          displayLarge: AppTextStyles.p3,
+          displayMedium: AppTextStyles.p4,
+          titleLarge: AppTextStyles.p5,
+          labelMedium: AppTextStyles.p6,
         ),
         appBarTheme: AppBarTheme(
           elevation: 0,

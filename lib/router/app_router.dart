@@ -12,6 +12,9 @@ import '../features/registration/presentation/pages/registration_details_page.da
 import '../features/services/presentation/pages/add_service_page.dart';
 import '../features/services/presentation/pages/services_list_page.dart';
 import '../features/splash/pages/splash_page.dart';
+import '../features/workers/presentation/pages/add_worker_page.dart';
+import '../features/workers/presentation/pages/add_worker_services.dart';
+import '../features/workers/presentation/pages/workers_list_page.dart';
 import '../services/auth/auth_provider.dart';
 import '../services/auth/model/auth_result.dart';
 import '../utils/not_found_page.dart';
@@ -74,14 +77,21 @@ final routerProvider = Provider<GoRouter>((ref) {
       //GoRoute(path: RoutePaths.home, name: RouteNames.home, builder: (context, state) => HomePage(key: state.pageKey)),
       ShellRoute(navigatorKey: _shellNavigatorKey, builder: (context, state, child) => HomePage(child: child), routes: [
         GoRoute(
-          path: RoutePaths.workers,
-          name: RouteNames.workers,
-          builder: (context, state) => const Center(
-              child: Text(
-            '1',
-            style: TextStyle(color: Colors.white, fontSize: 30),
-          )),
-        ),
+            path: RoutePaths.workers,
+            name: RouteNames.workers,
+            builder: (context, state) => const WorkersListPage(),
+            routes: [
+              GoRoute(
+                  path: RoutePaths.addWorker,
+                  name: RouteNames.addWorker,
+                  builder: (context, state) => const AddWorkerPage(),
+                  routes: [
+                    GoRoute(
+                        path: RoutePaths.addWorkerServices,
+                        name: RouteNames.addWorkerServices,
+                        builder: (context, state) => const AddWorkerServicesPage()),
+                  ]),
+            ]),
         GoRoute(
             path: RoutePaths.services,
             name: RouteNames.services,

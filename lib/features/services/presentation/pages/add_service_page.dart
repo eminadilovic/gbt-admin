@@ -43,7 +43,7 @@ class AddServicePage extends HookConsumerWidget {
         backgroundColor: Colors.transparent,
         resizeToAvoidBottomInset: false,
         body: Padding(
-          padding: const EdgeInsets.all(20).copyWith(top: 0),
+          padding: const EdgeInsets.all(20).copyWith(top: 50),
           child: _loading.value
               ? const Center(
                   child: SizedBox(

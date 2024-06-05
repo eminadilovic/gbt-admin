@@ -13,7 +13,6 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -25,13 +24,17 @@ class HomePage extends ConsumerWidget {
         backgroundColor: Colors.transparent,
         resizeToAvoidBottomInset: false,
         body: Padding(
-          padding: const EdgeInsets.only(left: 12, right: 12, top: 50),
+          padding: const EdgeInsets.only(
+            left: 12,
+            right: 12,
+          ),
           child: child,
         ),
+        extendBody: true,
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: ref.watch(currentPageProvider),
           type: BottomNavigationBarType.fixed,
-          backgroundColor: AppColors.black.withOpacity(0.3),
+          backgroundColor: AppColors.black.withOpacity(0.5),
           selectedItemColor: AppColors.secondary,
           unselectedItemColor: Colors.white.withOpacity(.60),
           unselectedFontSize: 14,
